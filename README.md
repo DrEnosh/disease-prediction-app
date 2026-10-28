@@ -19,7 +19,7 @@ The form in the app collects the patient values and returns the predicted outcom
 
 ## Run it
 
-You need Python 3.9 or newer.
+You need a recent Python 3.
 
 ```bash
 git clone https://github.com/DrEnosh/Disease_prediction.git
