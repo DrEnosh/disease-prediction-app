@@ -22,8 +22,8 @@ The form in the app collects the patient values and returns the predicted outcom
 You need a recent Python 3.
 
 ```bash
-git clone https://github.com/DrEnosh/Disease_prediction.git
-cd Disease_prediction
+git clone https://github.com/DrEnosh/disease-prediction-app.git
+cd disease-prediction-app
 python -m venv .venv
 .venv\Scripts\activate          # Windows
 # source .venv/bin/activate     # macOS / Linux
