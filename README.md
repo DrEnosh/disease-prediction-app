@@ -1,46 +1,48 @@
 # Disease Prediction App
 
-A machine learning web application built with Streamlit that predicts disease risk based on patient hospital data.
+A small Streamlit app that predicts a patient outcome from hospital data using a Random Forest model.
 
-## Overview
-This application uses a Random Forest Classifier trained on real clinical data to predict the likelihood of a specific disease outcome. The interface allows users to input patient demographics and medical history to get an instant risk assessment.
+> Educational project. It is not a medical device and must not be used to make clinical decisions.
 
-## Features
-*   **Interactive UI:** Built with Streamlit for a clean, user-friendly experience.
-*   **Machine Learning Model:** Utilizes a Random Forest model (`scikit-learn`) for accurate predictions.
-*   **Data Processing:** Handles missing values, outliers, and scales features automatically.
+## How it works
 
-## Installation
+On first run the app reads `data01.xlsx`, cleans it, trains a Random Forest classifier (scikit-learn) and saves it to `model.pkl`. Later runs load the saved model.
 
-1. Clone the repository:
-   ```bash
-   git clone <your-repository-url>
-   cd Disease_Prediction_App
-   ```
+Cleaning steps:
 
-2. Create a virtual environment (optional but recommended):
-   ```bash
-   python -m venv .venv
-   .venv\Scripts\activate  # On Windows
-   # source .venv/bin/activate  # On macOS/Linux
-   ```
+- Drop duplicate rows
+- Remove outliers in `age` and `BMI` with the 1.5 x IQR rule
+- Drop rows with no `outcome`, fill remaining missing values with column means
+- Scale every feature from the fourth column onward to the 0 to 1 range
 
-3. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+The form in the app collects the patient values and returns the predicted outcome.
 
-## Usage
+## Run it
 
-1. Run the Streamlit app:
-   ```bash
-   streamlit run app.py
-   ```
-2. Open your web browser and navigate to the local URL provided in the terminal (usually `http://localhost:8501`).
+You need Python 3.9 or newer.
 
-## Files in this Repository
-*   `app.py`: The main Streamlit application script.
-*   `data01.xlsx`: The clinical dataset used for training the model.
-*   `requirements.txt`: List of Python dependencies.
-*   `model.pkl`: The serialized trained Random Forest model (generated on first run).
-*   `Predictive_analysis(regression) (2).ipynb`: Jupyter notebook for model exploration and analysis.
+```bash
+git clone https://github.com/DrEnosh/Disease_prediction.git
+cd Disease_prediction
+python -m venv .venv
+.venv\Scripts\activate          # Windows
+# source .venv/bin/activate     # macOS / Linux
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Open the local address Streamlit prints (usually http://localhost:8501).
+
+## Files
+
+| File | Purpose |
+| --- | --- |
+| `app.py` | Streamlit app: data cleaning, model training, prediction form |
+| `data01.xlsx` | Dataset used to train the model |
+| `model.pkl` | Trained model, created on first run |
+| `predictive_analysis.ipynb` | Notebook with the exploration and model analysis |
+| `requirements.txt` | Python dependencies |
+
+## Author
+
+Dr. Enosh A Paulson. [LinkedIn](https://linkedin.com/in/dr-enosh) · [GitHub](https://github.com/DrEnosh)
